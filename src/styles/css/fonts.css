@@ -1,0 +1,12 @@
+@font-face {
+  font-family: iran-regular;
+  src: url("../fonts//iranyekanwebregular.woff") format("woff");
+}
+@font-face {
+  font-family: iran-medium;
+  src: url("../fonts//iranyekanwebmedium.woff") format("woff");
+}
+@font-face {
+  font-family: iran-bold;
+  src: url("../fonts//iranyekanwebbold.woff") format("woff");
+}

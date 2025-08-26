@@ -1,103 +1,190 @@
-import Image from "next/image";
+//styles
+import "@/src/styles/css/home.css";
+//ui
+import {
+  Image,
+  Button,
+  Text,
+  Box,
+  Avatar,
+  Card,
+  Stack,
+  IconButton,
+  HStack,
+} from "@chakra-ui/react";
+//icon
+import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa";
+import { HiOutlineDocumentDownload } from "react-icons/hi";
+
+const portItem = [
+  {
+    id: "1",
+    title: "سبزینه",
+    description: "فروش آنلاین سبزی، سیفیجات و انواع میوه های فصل",
+    img: "/sabzine.png",
+  },
+  {
+    id: "2",
+    title: "حالا وقتشه",
+    description: "به صورت آنلاین در هر جا زمان و کارهاتون رو مدیریت کنید",
+    img: "/todo.png",
+  },
+  {
+    id: "3",
+    title: "موتور پلاس",
+    description:
+      "خرید و فروش موتور سیکلت و لوازم جانبی آن در هر لحظه به صورت فوری",
+    img: "/motoplus.png",
+  },
+  {
+    id: "4",
+    title: "سالم باش",
+    description: "با مربی های ما تمرین کنید و بهترین نسخه از خودتون رو بسازید",
+    img: "/health.png",
+  },
+];
+
+const social = [
+  { id: "instagram", icon: <FaInstagram />, aria: "Instagram" },
+  { id: "telegram", icon: <FaTelegram />, aria: "Telegram" },
+  { id: "whatsapp", icon: <FaWhatsapp />, aria: "Whatsapp" },
+];
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <header className="navbar">
+        <Image src="/purpleLOGO.png" boxSize="80px" fit="cover" alt="LOGO" />
+      </header>
+      <main className="content items-center sm:items-start">
+        <Box
+          position="relative"
+          w="100%"
+          h="350px"
+          overflow="hidden"
+          className="box1"
+        >
+          <Image
+            src="/purpleLOGO.png"
+            alt="Background"
+            w="100%"
+            h="100%"
+            objectFit="cover" // توسط Chakra پیش‌فرض cover است
+            className="banner"
+          />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* متن روی عکس */}
+          <Text
+            position="absolute"
+            bottom="24"
+            insetStart="3" // معادل left در LTR و right در RTL
+            color="white"
+            fontSize="xl"
+            fontWeight="medium"
+            lineHeight="long"
+            textShadow="0 2px 12px rgba(0,0,0,0.6)"
+            whiteSpace="pre-line"
+            textAlign={"Center"}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            بنفش از سال های پیش توسط <span>علیرضا شفیعی</span> ایجاد شد. نسخه
+            های مختلفی از اون بیرون اومد، تغییرات زیادی روش ایجاد شد که شاید شما
+            متوجه اون نمیشدید. بنفش برای شما یک رنگه ولی برای من یک علاقه هست.
+            بخاطر علاقه ای ک به این رنگ داشتم اومدم و اون رو به یک برند تبدیل
+            کردم تا برام بمونه.
+            {"\n"}امیدوارم که بتونیم در کنارتون بهترین باشیم، منتظر خبر های خوب
+            باشید.✨
+          </Text>
+        </Box>
+        <div className="portfolio">
+          {portItem.map((item) => (
+            <Card.Root
+              width="250px"
+              height={"250px"}
+              variant={"outline"}
+              key={item.id}
+              className="portCard"
+            >
+              <Card.Body gap={1}>
+                <Avatar.Root size="lg" shape="rounded" bg={"white"}>
+                  <Avatar.Image src={item.img} />
+                  <Avatar.Fallback name="avatar" />
+                </Avatar.Root>
+                <Card.Title mb="2">{item.title}</Card.Title>
+                <Card.Description overflowY={"20px"}>
+                  {item.description}
+                </Card.Description>
+              </Card.Body>
+              <Card.Footer justifyContent="flex-start">
+                <Button
+                  variant="outline"
+                  className="tracking-widest"
+                  data-disabled
+                  color={"black"}
+                >
+                  بزودی
+                </Button>
+              </Card.Footer>
+            </Card.Root>
+          ))}
+        </div>
+        <div className="aboutUs">
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            border={"2px solid black"}
+            borderBottom={"0"}
+            padding={"15px"}
+            borderRadius={"10px"}
           >
-            Read our docs
-          </a>
+            <h2 className="text-xl">
+              برای دریافت خبر های جدید و همراهی ما، دنبال کنید:
+            </h2>
+            <HStack wrap="wrap" gap="5">
+              {social.map((item) => (
+                <IconButton
+                  key={item.id}
+                  aria-label={item.aria}
+                  rounded="full"
+                  variant="outline"
+                  border={"2px solid black"}
+                  color={"black"}
+                >
+                  {item.icon}
+                </IconButton>
+              ))}
+            </HStack>
+          </Box>
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            border={"2px solid black"}
+            borderTop={"0"}
+            padding={"15px"}
+            borderRadius={"10px"}
+          >
+            برای آشنایی بیشتر با من (علیرضا شفیعی) میتوانید رزومه را دانلود و
+            مشاهده کنید:
+            <Button
+              variant="outline"
+              border={"2px solid black"}
+              borderRadius={"7px"}
+              color={"black"}
+              width={"150px"}
+              fontSize={"md"}
+            >
+              رزومه <HiOutlineDocumentDownload />
+            </Button>
+          </Box>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className="footer">
+        <span>Created By Alireza Shafiei</span>
+        <span>©purple 2025</span>
       </footer>
-    </div>
+    </>
   );
 }
