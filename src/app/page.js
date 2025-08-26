@@ -11,6 +11,7 @@ import {
   Stack,
   IconButton,
   HStack,
+  Link,
 } from "@chakra-ui/react";
 //icon
 import { FaInstagram, FaTelegram, FaWhatsapp } from "react-icons/fa";
@@ -45,9 +46,24 @@ const portItem = [
 ];
 
 const social = [
-  { id: "instagram", icon: <FaInstagram />, aria: "Instagram" },
-  { id: "telegram", icon: <FaTelegram />, aria: "Telegram" },
-  { id: "whatsapp", icon: <FaWhatsapp />, aria: "Whatsapp" },
+  {
+    id: "instagram",
+    icon: <FaInstagram />,
+    aria: "Instagram",
+    link: "https://www.instagram.com/thepurple.ir?igsh=MWU0dGVmN2VlMWd4cQ==",
+  },
+  {
+    id: "telegram",
+    icon: <FaTelegram />,
+    aria: "Telegram",
+    link: "https://t.me/thisispurple",
+  },
+  {
+    id: "whatsapp",
+    icon: <FaWhatsapp />,
+    aria: "Whatsapp",
+    link: "https://wa.me/message/KWGY2OYSR4AHP1",
+  },
 ];
 
 export default function Home() {
@@ -62,7 +78,7 @@ export default function Home() {
           w="100%"
           h="350px"
           overflow="hidden"
-          className="box1"
+          className="banner"
         >
           <Image
             src="/purpleLOGO.png"
@@ -70,27 +86,29 @@ export default function Home() {
             w="100%"
             h="100%"
             objectFit="cover" // توسط Chakra پیش‌فرض cover است
-            className="banner"
+            className="bannerImg"
           />
 
           {/* متن روی عکس */}
           <Text
             position="absolute"
-            bottom="24"
+            bottom="36"
             insetStart="3" // معادل left در LTR و right در RTL
             color="white"
-            fontSize="xl"
+            fontSize="lg"
             fontWeight="medium"
             lineHeight="long"
             textShadow="0 2px 12px rgba(0,0,0,0.6)"
             whiteSpace="pre-line"
             textAlign={"Center"}
           >
-            بنفش از سال های پیش توسط <span>علیرضا شفیعی</span> ایجاد شد. نسخه
-            های مختلفی از اون بیرون اومد، تغییرات زیادی روش ایجاد شد که شاید شما
-            متوجه اون نمیشدید. بنفش برای شما یک رنگه ولی برای من یک علاقه هست.
-            بخاطر علاقه ای ک به این رنگ داشتم اومدم و اون رو به یک برند تبدیل
-            کردم تا برام بمونه.
+            بنفش از کجا اومد؟{"\n"}
+            بنفش از ترکیب ی رنگ با تکنولوژی میاد، زمانی که من علاقه زیادی به رنگ
+            بنفش داشتم و در کنارش برنامه نویسی رو شروع کرده بودم و در ذهن خودم
+            به دنبال این بودم که یک برندی بسازم و اون رو رشد بدم، چه چیزی بهتر
+            از بنفش یا به انگلیسی Purple. بنفش تا از گذشته تا به امروز در حوزه
+            طراحی سایت فعالیت میکنه و تا الان سه نسخه ازش بیرون اوده که آخرین
+            نسخش رو شما داخلش هستید.
             {"\n"}امیدوارم که بتونیم در کنارتون بهترین باشیم، منتظر خبر های خوب
             باشید.✨
           </Text>
@@ -143,16 +161,22 @@ export default function Home() {
             </h2>
             <HStack wrap="wrap" gap="5">
               {social.map((item) => (
-                <IconButton
+                <Link
+                  href={item.link}
                   key={item.id}
-                  aria-label={item.aria}
-                  rounded="full"
-                  variant="outline"
-                  border={"2px solid black"}
-                  color={"black"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {item.icon}
-                </IconButton>
+                  <IconButton
+                    aria-label={item.aria}
+                    rounded="full"
+                    variant="outline"
+                    border={"2px solid black"}
+                    color={"black"}
+                  >
+                    {item.icon}
+                  </IconButton>
+                </Link>
               ))}
             </HStack>
           </Box>
@@ -175,6 +199,9 @@ export default function Home() {
               color={"black"}
               width={"150px"}
               fontSize={"md"}
+              as="a"
+              href="/AlirezaShafiei.pdf"
+              download="Alireza_Shafiei.pdf"
             >
               رزومه <HiOutlineDocumentDownload />
             </Button>
@@ -182,8 +209,8 @@ export default function Home() {
         </div>
       </main>
       <footer className="footer">
-        <span>Created By Alireza Shafiei</span>
         <span>©purple 2025</span>
+        <span>Created By Alireza Shafiei</span>
       </footer>
     </>
   );
