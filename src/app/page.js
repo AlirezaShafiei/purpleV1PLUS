@@ -73,13 +73,7 @@ export default function Home() {
         <Image src="/purpleLOGO.png" boxSize="80px" fit="cover" alt="LOGO" />
       </header>
       <main className="content items-center sm:items-start">
-        <Box
-          position="relative"
-          w="100%"
-          h="350px"
-          overflow="hidden"
-          className="banner"
-        >
+        <Box position="relative" overflow="hidden" className="banner">
           <Image
             src="/purpleLOGO.png"
             alt="Background"
@@ -90,18 +84,7 @@ export default function Home() {
           />
 
           {/* متن روی عکس */}
-          <Text
-            position="absolute"
-            bottom="36"
-            insetStart="3" // معادل left در LTR و right در RTL
-            color="white"
-            fontSize="lg"
-            fontWeight="medium"
-            lineHeight="long"
-            textShadow="0 2px 12px rgba(0,0,0,0.6)"
-            whiteSpace="pre-line"
-            textAlign={"Center"}
-          >
+          <Text className="bnr-text">
             بنفش از کجا اومد؟{"\n"}
             بنفش از ترکیب ی رنگ با تکنولوژی میاد، زمانی که من علاقه زیادی به رنگ
             بنفش داشتم و در کنارش برنامه نویسی رو شروع کرده بودم و در ذهن خودم
@@ -146,16 +129,7 @@ export default function Home() {
           ))}
         </div>
         <div className="aboutUs">
-          <Box
-            display={"flex"}
-            flexDirection={"row"}
-            alignItems={"center"}
-            justifyContent={"space-between"}
-            border={"2px solid black"}
-            borderBottom={"0"}
-            padding={"15px"}
-            borderRadius={"10px"}
-          >
+          <Box className="socialBox">
             <h2 className="text-xl">
               برای دریافت خبر های جدید و همراهی ما، دنبال کنید:
             </h2>
@@ -180,16 +154,7 @@ export default function Home() {
               ))}
             </HStack>
           </Box>
-          <Box
-            display={"flex"}
-            flexDirection={"row"}
-            alignItems={"center"}
-            justifyContent={"space-between"}
-            border={"2px solid black"}
-            borderTop={"0"}
-            padding={"15px"}
-            borderRadius={"10px"}
-          >
+          <Box className="resumeBox">
             برای آشنایی بیشتر با من (علیرضا شفیعی) میتوانید رزومه را دانلود و
             مشاهده کنید:
             <Button

@@ -1,3 +1,12 @@
+.content {
+  margin-top: 85px;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 .navbar {
   display: flex;
   flex-direction: row;
@@ -11,14 +20,6 @@
   border-bottom: 1px solid rgb(184, 184, 184);
   justify-content: center;
   align-items: center;
-}
-.content {
-  margin-top: 85px;
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
 }
 .footer {
   display: flex;
@@ -50,18 +51,30 @@
     rgba(111, 87, 199, 1) 54%,
     rgba(169, 133, 255, 1) 100%
   );
+  width: 100%;
+  height: 350px;
+}
+.bnr-text {
+  position: absolute;
+  bottom: 7rem;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+  font-size: larger;
+  font-weight: medium;
+  line-height: long;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  white-space: pre-line;
+  text-align: center;
 }
 .portfolio {
   margin-top: -85px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(100px, auto)
-  ); /* Example: auto-fit columns */
+  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  align-items: center;
   justify-content: center;
-  align-content: center;
-  gap: 3rem;
+  gap: 1rem;
 }
 .portCard {
   background-color: rgb(255, 255, 255);
@@ -75,4 +88,69 @@
   padding: 10px;
   padding-left: 17px;
   padding-right: 17px;
+}
+.socialBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+  border-bottom: 0;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+.resumeBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+  border-top: 0;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .portfolio {
+    grid-template-columns: repeat(3, minmax(120px, auto));
+  }
+}
+@media (max-width: 768px) {
+  .portfolio {
+    grid-template-columns: repeat(2, minmax(120px, auto));
+  }
+  .socialBox {
+    flex-direction: column;
+    row-gap: 0.75rem;
+  }
+  .resumeBox {
+    flex-direction: column;
+    row-gap: 0.75rem;
+  }
+}
+@media (max-width: 640px) {
+  .portfolio {
+    grid-template-columns: repeat(1, minmax(120px, auto));
+  }
+  .socialBox {
+    font-size: 14px;
+  }
+  .resumeBox {
+    font-size: 14px;
+  }
+  .footer {
+    flex-direction: column;
+    row-gap: 0.5rem;
+    height: 60px;
+  }
+  .banner {
+    height: 500px;
+  }
+}
+@media (max-width: 380px) {
+  .bnr-text {
+    font-size: medium;
+  }
 }
